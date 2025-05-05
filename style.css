@@ -1,0 +1,114 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body, html {
+	font-family: 'Segoe UI', sans-serif;
+	background-color: #111;
+	color: white;
+  }
+  
+  h1 {
+	font-size: 3rem;
+	text-align: center;
+	margin: 1px
+
+  }
+  .hero {
+	height: 60vh;
+	background: url('/assets/img1.png') center/cover no-repeat;
+	position: relative;
+  }
+  
+  .overlay {
+	background-color: rgba(0, 0, 0, 0.6);
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .content h1 {
+	font-size: 3rem;
+	color: white;
+	animation: fadeIn 2s ease;
+  }
+  
+  .content span {
+	color: #00bcd4;
+  }
+  
+  /* Carousel */
+  .carousel-container {
+	overflow: hidden;
+	width: 100%;
+	background: #000;
+  }
+  
+  .carousel {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+	width: 600%;
+  }
+  
+  .carousel img {
+	width: 100vw;
+	height: 250px;
+	object-fit: cover;
+  }
+  
+  /* Boutons */
+  .buttons-section {
+	text-align: center;
+	margin: 2em 0;
+  }
+  
+  .btn {
+	padding: 1em 2em;
+	margin: 0 1em;
+	background-color: #00bcd4;
+	color: white;
+	text-decoration: none;
+	border-radius: 6px;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+	background-color: #0196a0;
+  }
+  
+  .btn.secondary {
+	background-color: transparent;
+	border: 2px solid white;
+  }
+  
+  .btn.secondary:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+	.content h1 {
+	  font-size: 2rem;
+	  text-align: center;
+	}
+  
+	.carousel img {
+	  height: 180px;
+	}
+  
+	.btn {
+	  display: block;
+	  margin: 1em auto;
+	}
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+	from { opacity: 0; transform: translateY(-20px); }
+	to   { opacity: 1; transform: translateY(0); }
+  }
+  

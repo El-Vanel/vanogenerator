@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vano Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="h-10 w-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <h1 class="ml-2 text-2xl font-bold text-gray-800">Vano Generator</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="nav-item active" data-section="graph">Graphiques</a></li>
+                    <li><a href="#" class="nav-item" data-section="icon">Icônes</a></li>
+                    <li><a href="#" class="nav-item" data-section="shape">Formes</a></li>
+                    <li><a href="#" class="nav-item" data-section="image">Images</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Graphiques Section -->
+        <section id="graph-section" class="section-content">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-700">Générateur de Graphiques</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="col-span-1">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Type de Graphique</label>
+                            <select id="chart-type" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="bar">Diagramme à Barres</option>
+                                <option value="line">Ligne</option>
+                                <option value="pie">Camembert</option>
+                                <option value="doughnut">Anneau</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Données (séparées par des virgules)</label>
+                            <input type="text" id="chart-data" value="12, 19, 3, 5, 2, 3" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Étiquettes (séparées par des virgules)</label>
+                            <input type="text" id="chart-labels" value="Rouge, Bleu, Jaune, Vert, Violet, Orange" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Titre du Graphique</label>
+                            <input type="text" id="chart-title" value="Mon Graphique" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        
+                        <button id="generate-chart" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Générer le Graphique
+                        </button>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <div class="bg-gray-100 rounded-lg p-4 h-full flex items-center justify-center">
+                            <canvas id="chart-canvas" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <button id="download-chart" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Télécharger le Graphique
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icônes Section -->
+        <section id="icon-section" class="section-content hidden">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-700">Générateur d'Icônes</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="col-span-1">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Forme de Base</label>
+                            <select id="icon-base" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="circle">Cercle</option>
+                                <option value="square">Carré</option>
+                                <option value="triangle">Triangle</option>
+                                <option value="hexagon">Hexagone</option>
+                                <option value="star">Étoile</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Taille (px)</label>
+                            <input type="range" id="icon-size" min="32" max="200" value="64" class="range-slider">
+                            <span id="icon-size-value" class="text-sm text-gray-600">64px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur de Remplissage</label>
+                            <div class="flex items-center">
+                                <input type="color" id="icon-fill-color" value="#4F46E5" class="color-picker mr-2">
+                                <span id="icon-fill-color-value" class="text-sm text-gray-600">#4F46E5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur de Contour</label>
+                            <div class="flex items-center">
+                                <input type="color" id="icon-stroke-color" value="#1E293B" class="color-picker mr-2">
+                                <span id="icon-stroke-color-value" class="text-sm text-gray-600">#1E293B</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Épaisseur de Contour (px)</label>
+                            <input type="range" id="icon-stroke-width" min="0" max="20" value="2" class="range-slider">
+                            <span id="icon-stroke-width-value" class="text-sm text-gray-600">2px</span>
+                        </div>
+                        
+                        <button id="generate-icon" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Générer l'Icône
+                        </button>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <div class="bg-gray-100 rounded-lg p-4 h-full flex items-center justify-center">
+                            <canvas id="icon-canvas" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <button id="download-icon" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Télécharger l'Icône
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formes Section -->
+        <section id="shape-section" class="section-content hidden">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-700">Générateur de Formes</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="col-span-1">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Type de Forme</label>
+                            <select id="shape-type" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="rectangle">Rectangle</option>
+                                <option value="circle">Cercle</option>
+                                <option value="triangle">Triangle</option>
+                                <option value="polygon">Polygone</option>
+                                <option value="star">Étoile</option>
+                                <option value="heart">Cœur</option>
+                            </select>
+                        </div>
+                        
+                        <div id="polygon-sides-container" class="mb-4 hidden">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Nombre de côtés</label>
+                            <input type="range" id="polygon-sides" min="3" max="12" value="5" class="range-slider">
+                            <span id="polygon-sides-value" class="text-sm text-gray-600">5 côtés</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Largeur (px)</label>
+                            <input type="range" id="shape-width" min="20" max="400" value="200" class="range-slider">
+                            <span id="shape-width-value" class="text-sm text-gray-600">200px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Hauteur (px)</label>
+                            <input type="range" id="shape-height" min="20" max="400" value="200" class="range-slider">
+                            <span id="shape-height-value" class="text-sm text-gray-600">200px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Rayon des bords (px)</label>
+                            <input type="range" id="shape-border-radius" min="0" max="100" value="0" class="range-slider">
+                            <span id="shape-border-radius-value" class="text-sm text-gray-600">0px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur de Remplissage</label>
+                            <div class="flex items-center">
+                                <input type="color" id="shape-fill-color" value="#818CF8" class="color-picker mr-2">
+                                <span id="shape-fill-color-value" class="text-sm text-gray-600">#818CF8</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur de Contour</label>
+                            <div class="flex items-center">
+                                <input type="color" id="shape-stroke-color" value="#4338CA" class="color-picker mr-2">
+                                <span id="shape-stroke-color-value" class="text-sm text-gray-600">#4338CA</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Épaisseur de Contour (px)</label>
+                            <input type="range" id="shape-stroke-width" min="0" max="20" value="2" class="range-slider">
+                            <span id="shape-stroke-width-value" class="text-sm text-gray-600">2px</span>
+                        </div>
+                        
+                        <button id="generate-shape" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Générer la Forme
+                        </button>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <div class="bg-gray-100 rounded-lg p-4 h-full flex items-center justify-center">
+                            <canvas id="shape-canvas" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <button id="download-shape" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Télécharger la Forme
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images Section -->
+        <section id="image-section" class="section-content hidden">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-700">Générateur d'Images</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="col-span-1">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Type d'Image</label>
+                            <select id="image-type" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="pattern">Motif Géométrique</option>
+                                <option value="abstract">Art Abstrait</option>
+                                <option value="gradient">Dégradé</option>
+                                <option value="noise">Bruit</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Largeur (px)</label>
+                            <input type="range" id="image-width" min="100" max="800" value="500" class="range-slider">
+                            <span id="image-width-value" class="text-sm text-gray-600">500px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Hauteur (px)</label>
+                            <input type="range" id="image-height" min="100" max="800" value="500" class="range-slider">
+                            <span id="image-height-value" class="text-sm text-gray-600">500px</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur Primaire</label>
+                            <div class="flex items-center">
+                                <input type="color" id="image-primary-color" value="#4F46E5" class="color-picker mr-2">
+                                <span id="image-primary-color-value" class="text-sm text-gray-600">#4F46E5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Couleur Secondaire</label>
+                            <div class="flex items-center">
+                                <input type="color" id="image-secondary-color" value="#818CF8" class="color-picker mr-2">
+                                <span id="image-secondary-color-value" class="text-sm text-gray-600">#818CF8</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Complexité</label>
+                            <input type="range" id="image-complexity" min="1" max="10" value="5" class="range-slider">
+                            <span id="image-complexity-value" class="text-sm text-gray-600">5</span>
+                        </div>
+                        
+                        <button id="generate-image" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Générer l'Image
+                        </button>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <div class="bg-gray-100 rounded-lg p-4 h-full flex items-center justify-center">
+                            <canvas id="image-canvas" width="500" height="500"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <button id="download-image" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Télécharger l'Image
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-6 mt-10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600 dark:text-gray-300">
+                &copy; 2025 Vano Generator - Tous droits réservés<br>
+                Développé par <strong>El-Vanel Dev</strong><br>
+                Contact support : <a href="mailto:elvanel.dev@gmail.com" class="text-indigo-600 dark:text-indigo-400">elvanel.dev@gmail.com</a> | 
+                WhatsApp : <a href="https://wa.me/22969962505" class="text-indigo-600 dark:text-indigo-400">+229 01 69 96 25 05</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
