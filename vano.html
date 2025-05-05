@@ -10,14 +10,16 @@
 </head>
 <body class="min-h-screen">
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-4 md:py-6 flex justify-between items-center">
             <div class="flex items-center">
                 <svg class="h-10 w-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 <h1 class="ml-2 text-2xl font-bold text-gray-800">Vano Generator</h1>
             </div>
-            <nav>
+            
+            <!-- Menu Desktop -->
+            <nav class="hidden md:block">
                 <ul class="flex space-x-6">
                     <li><a href="#" class="nav-item active" data-section="graph">Graphiques</a></li>
                     <li><a href="#" class="nav-item" data-section="icon">Icônes</a></li>
@@ -25,6 +27,31 @@
                     <li><a href="#" class="nav-item" data-section="image">Images</a></li>
                 </ul>
             </nav>
+            
+            <!-- Bouton Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <ul class="px-2 py-3">
+                <li>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 nav-item active" data-section="graph">Graphiques</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 nav-item" data-section="icon">Icônes</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 nav-item" data-section="shape">Formes</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 nav-item" data-section="image">Images</a>
+                </li>
+            </ul>
         </div>
     </header>
 
@@ -306,11 +333,11 @@
 
     <footer class="bg-white py-6 mt-10">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-600">
                 &copy; 2025 Vano Generator - Tous droits réservés<br>
                 Développé par <strong>El-Vanel Dev</strong><br>
-                Contact support : <a href="mailto:elvanel.dev@gmail.com" class="text-indigo-600 dark:text-indigo-400">elvanel.dev@gmail.com</a> | 
-                WhatsApp : <a href="https://wa.me/22969962505" class="text-indigo-600 dark:text-indigo-400">+229 01 69 96 25 05</a>
+                Contact support : <a href="mailto:elvanel.dev@gmail.com" class="text-indigo-600">elvanel.dev@gmail.com</a> | 
+                WhatsApp : <a href="https://wa.me/22969962505" class="text-indigo-600">+229 01 69 96 25 05</a>
             </p>
         </div>
     </footer>
